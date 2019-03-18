@@ -1,31 +1,200 @@
-        check:
+#Example AC Config
+#Example AC uses actions.
+#
+##################################################################################################
+#Example of an action:
+#
+#actions: cancel:example notify %player% is using %hack%:vl%=3:example message r u using %hack% m8?:vl==5:example kick %player% %tag% st0p h4ck1ng n00b:example broadcast %player% has been kicked for using %hack%.
+#
+#In this usage, it will cancel all violations and notify admins. If violation is equal or more than 3, it will send message to player. If violation is equal to 5, it will kick him.
+#
+#Use ':' character for multiple commands. If you want to use it in message or something else, use '\:' character.
+#
+#Operators to check violation:
+#== (equal to)
+#> (greater than)
+#< (less than)
+#>= (greater than or equal to)
+#<= (less than or equal to)
+#
+#Available placeholders: %player%, %tag%, %vl%, %ping%, %tps%, %hack%, %module%​ or %offset% (offset only applies to a command. Example: /example notify RERERE is using speeeeeeed!!!! 
+#"RERERE is using speeeeeeed!!!!" would be the offset.)
+#
+#Supports PlaceholderAPI https://www.spigotmc.org/resources/placeholderapi.6245/
+##################################################################################################
+#
+#Configuration for example commands.
+commands:
+    #The ban command for example usually bans someone.
+    ban:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.ban"
+        #What animation would it use? Requires a plugin like: https://www.spigotmc.org/resources/ban-animations.36483/ .
+        animation: none
+        #Actions? (explained above)
+        actions: ban %offset%
+        #The command the should be used to perform actions?(without a /)?
+        command: "example ban %offset%"
+    #The kick command for example usually kicks someone.
+    kick:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.kick"
+        #What animation would it use? Requires a plugin like: https://www.spigotmc.org/resources/ban-animations.36483/ .
+        animation: none
+        #Actions? (explained above)
+        actions: kick %offset%'
+        #The command the should be used to perform actions?(without a /)?
+        command: "example kick %offset%"
+    #The message command for example usually messages the a player of something.
+    message:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.message"
+        #Actions? (explained above)
+        actions: msg %offset%'
+        #The command the should be used to perform actions? (without a /)?
+        command: "example message %offset%"
+    #The broadcast command for example usually broadcasts the entire server of something.
+    broadcast:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.broadcast"
+        #Actions? (explained above)
+        actions: broadcast %offset%'
+        #The command the should be used to perform actions? (without a /)?
+        command: "example broadcast %offset%"
+    #The log command for example doesn't have an "actions" section because it can't exist. This command logs something to a file. See below for details.
+    log:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.log"
+        #The command the should be used to perform actions? (without a /)?
+        command: "example log %offset%"
+    #The log command for example doesn't have an "actions" section because it only sends %offset% to admins. This command usually notifies admins of something.
+    notify:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.notify"
+        #The command the should be used to perform actions? (without a /)?
+        command: "example notify %offset%"
+
+#You can add more if you want.
+
+#Update checker will check to see if there is an update for example.
+update_checker:
+
+    #Is the update checker enabled?
+    enabled: true
+
+    #Check interval.
+    #Measured in ticks. 1 second = 20 ticks. 1 minute = 1200 ticks. 1 hour = 72000 ticks.
+    time: 12000
+
+#Notification system
+  notification:
+
+    #This feature is disabled by default. Enabling this feature will disable every check's action list and only use this one below.
+    enabled: false
+
+    #When the player cheats a certain number of times, what commands will be executed?
+    #The player variable is %player%.
+    #Please note that at least two numbers or more!
+    action: %vl%=3:cancel:example notify %player% is using %hack%:%vl%=6:example message r u using %hack% m8?:%vl%==9:example kick %player% You have been kicked for %hack%.
+
+#Time for the good stuff. Checks.
+checks:
+#example check
+#Most checks will follow this patern. If it has something that isn't here, it will be explained there.
+#    check:
+#Is the check enabled?
+#        enabled: true
+#Check name for %hack%
+#        name: Check
+#You can set all the parameters here
+#        modules:
+#Module
+#            module:
+#Is the check enabled?
+#                enabled: true
+#Amount it will add to violations.
+#                violation-add: 1
+#How many violations will this check need to add to the global violations?
+#        violation-need: 100
+#How many violations will this check add to the global violations?
+#        g-violation-add: 10
+#Actions.
+#        action: %vl%=1:cancel:example notify %player% might be using %hack%.
+    killaura:
+        enabled: true
+        name: KillAura
+        modules:
+            SelfHit:
                 enabled: true
-                name: Check
+                violation-add: 30
+            Reach:
+                enabled: true
+                #Max reach distance
+                max_reach: 3.2
+                violation-add: 8
+            Analyzer:
+                enabled: true
+                Accuracy:
+                    enabled: true
+                    #The minimum amout of movement before this check will check the player. Mesured in blocks. Can be decimal.
+                    min-movement: 2.375
+                    #Percentage of hits before adding to the violations.
+                    percentage: 40
+                    violation-add: 9
+                Aimbot:
+                    enabled: true
+                    #How strict should the patern recognition be? The stricter it is, the less it will flag, but the less strict it is, the more it will false. 0 will flag everybody. 100 will only flag really shitty aimbots.
+                    strict: 75
+                    #Percentage of hits before adding to the violations.
+                    percentage: 40
+                    violation-add: 15
+            
+            violation-need: 200
+            g-violation-add: 15
+            action: %vl%=70:cancel:%vl%=90:example notify %player% might be using killaura.:%vl%=120:example notify %player% is probably using killaura. %vl%=300: example kick %player% You have been kicked because of suspicious attack.
+            
+        speed:
+                enabled: true
+                name: Speed
                 modules:
-                    module:
+                    limit:
                         enabled: true
-                        violation-add: 1
+                        #Maximum bps (blocks per second) the player can go in the air. Usage: 3t:7.7,10t:6.8,5.7 would be 3ticks in the air, the max would be 7.7 bps, then 10 ticks, max 6.8, then max 5.7 bps.
+                        max-bps-air: 3t:7.7,10t:6.8,5.7
+                        #Maximum bps (blocks per second) the player can go in the ground. Usage: 3t:7.7,10t:6.8,5.7 would be 3ticks in the air, the max would be 7.7 bps, then 10 ticks, max 6.8, then max 5.7 bps.
+                        max-bps-ground: 2t:16,6
+                        violation-add: 14
+                    timer:
+                        enabled: true
+                        #Maximum timer the player can have.
+                        max-timer: 1.08
+                        #Minimum timer the player can have.
+                        min-timer: 0.97
+                        #Maximum pps (packets per second) the player can send. I actually don't know, so ac devs, pls insert this number.
+                        max-pps: 100
+                        #Minimum pps (packets per second) the player can send. I actually don't know, so ac devs, pls insert this number.
+                        min-pps: 10
+                        violation-add: 14
+                    low-hop:
+                        enabled: true
+                        #Maximum blocks the player can jump. This is the EXACT value of minecraft.
+                        max-blocks-height: 1.24918707874468
+                        #Minimum blocks the player can jump. 
+                        min-blocks-height: 1.249
+                        
                 violation-need: 100
                 g-violation-add: 10
                 action: %vl%=1:cancel:example notify %player% might be using %hack%.
-        
-        
-        check:
-                #Is the check enabled?
-                enabled: true
-                #Check name for %hack%
-                name: Check
-                #You can set all the parameters here
-                modules:
-                    #Module
-                module:
-                        #Is the check enabled?
-                        enabled: true
-                        #Amount it will add to violations.
-                        violation-add: 1
-                #How many violations will this check need to add to the global violations?
-                violation-need: 100
-                #How many violations will this check add to the global violations?
-                g-violation-add: 10
-                #Actions.
-                action: %vl%=1:cancel:example notify %player% might be using %hack%.
+#This is the end of this example. I might add more(? Maybe), but you get the concept of the config.
