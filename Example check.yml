@@ -1,31 +1,31 @@
-check:
-        enabled: true
-        name: Check
-        modules:
-            module:
+        check:
                 enabled: true
-                violation-add: 1
-        violation-need: 100
-        g-violation-add: 10
-        action: %vl%=1:cancel:example notify %player% might be using %hack%.
+                name: Check
+                modules:
+                    module:
+                        enabled: true
+                        violation-add: 1
+                violation-need: 100
+                g-violation-add: 10
+                action: %vl%=1:cancel:example notify %player% might be using %hack%.
         
         
-check:
-        #Is the check enabled?
-        enabled: true
-        #Check name for %hack%
-        name: Check
-        #You can set all the parameters here
-        modules:
-            #Module
-            module:
+        check:
                 #Is the check enabled?
                 enabled: true
-                #Amount it will add to violations.
-                violation-add: 1
-        #How many violations will this check need to add to the global violations?
-        violation-need: 100
-        #How many violations will this check add to the global violations?
-        g-violation-add: 10
-        #Actions.
-        action: %vl%=1:cancel:example notify %player% might be using %hack%.
+                #Check name for %hack%
+                name: Check
+                #You can set all the parameters here
+                modules:
+                    #Module
+                module:
+                        #Is the check enabled?
+                        enabled: true
+                        #Amount it will add to violations.
+                        violation-add: 1
+                #How many violations will this check need to add to the global violations?
+                violation-need: 100
+                #How many violations will this check add to the global violations?
+                g-violation-add: 10
+                #Actions.
+                action: %vl%=1:cancel:example notify %player% might be using %hack%.
