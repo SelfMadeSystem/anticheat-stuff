@@ -1,0 +1,64 @@
+#Configuration for example commands.
+commands:
+    #The ban command for example usually bans someone.
+    ban:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.ban"
+        #What animation would it use? Requires a plugin like: https://www.spigotmc.org/resources/ban-animations.36483/ .
+        animation: none
+        #Actions? (explained above)
+        actions: ban %offset%
+        #The command the should be used to perform actions?(without a /)?
+        command: "example ban %offset%"
+    #The kick command for example usually kicks someone.
+    kick:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.kick"
+        #What animation would it use? Requires a plugin like: https://www.spigotmc.org/resources/ban-animations.36483/ .
+        animation: none
+        #Actions? (explained above)
+        actions: kick %offset%'
+        #The command the should be used to perform actions?(without a /)?
+        command: "example kick %offset%"
+    #The message command for example usually messages the a player of something.
+    message:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.message"
+        #Actions? (explained above)
+        actions: msg %offset%'
+        #The command the should be used to perform actions? (without a /)?
+        command: "example message %offset%"
+    #The broadcast command for example usually broadcasts the entire server of something.
+    broadcast:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.broadcast"
+        #Actions? (explained above)
+        actions: broadcast %offset%'
+        #The command the should be used to perform actions? (without a /)?
+        command: "example broadcast %offset%"
+    #The log command for example doesn't have an "actions" section because it can't exist. This command logs something to a file. See below for details.
+    log:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.log"
+        #The command the should be used to perform actions? (without a /)?
+        command: "example log %offset%"
+    #The log command for example doesn't have an "actions" section because it only sends %offset% to admins. This command usually notifies admins of something.
+    notify:
+        #Is this command enabled?
+        enabled: true
+        #What is the permission node for this command?
+        perm-node: "example.command.notify"
+        #The command the should be used to perform actions? (without a /)?
+        command: "example notify %offset%"
+
+#You can add more if you want.
