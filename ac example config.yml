@@ -1,27 +1,7 @@
 #Example AC Config
 #Example AC uses actions.
 #
-##################################################################################################
-#Example of an action:
-#
-#actions: cancel:example notify %player% is using %hack%:vl%=3:example message r u using %hack% m8?:vl==5:example kick %player% %tag% st0p h4ck1ng n00b:example broadcast %player% has been kicked for using %hack%.
-#
-#In this usage, it will cancel all violations and notify admins. If violation is equal or more than 3, it will send message to player. If violation is equal to 5, it will kick him.
-#
-#Use ':' character for multiple commands. If you want to use it in message or something else, use '\:' character.
-#
-#Operators to check violation:
-#== (equal to)
-#> (greater than)
-#< (less than)
-#>= (greater than or equal to)
-#<= (less than or equal to)
-#
-#Available placeholders: %player%, %tag%, %vl%, %ping%, %tps%, %hack%, %module%​ or %offset% (offset only applies to a command. Example: /example notify RERERE is using speeeeeeed!!!! 
-#"RERERE is using speeeeeeed!!!!" would be the offset.)
-#
 #Supports PlaceholderAPI https://www.spigotmc.org/resources/placeholderapi.6245/
-##################################################################################################
 #
 #Configuration for example commands.
 commands:
@@ -97,18 +77,7 @@ update_checker:
     #Check interval.
     #Measured in ticks. 1 second = 20 ticks. 1 minute = 1200 ticks. 1 hour = 72000 ticks.
     time: 12000
-
-#Notification system
-  notification:
-
-    #This feature is disabled by default. Enabling this feature will disable every check's action list and only use this one below.
-    enabled: false
-
-    #When the player cheats a certain number of times, what commands will be executed?
-    #The player variable is %player%.
-    #Please note that at least two numbers or more!
-    action: %vl%=3:cancel:example notify %player% is using %hack%:%vl%=6:example message r u using %hack% m8?:%vl%==9:example kick %player% You have been kicked for %hack%.
-
+    
 #Time for the good stuff. Checks.
 checks:
 #example check
@@ -131,7 +100,8 @@ checks:
 #How many violations will this check add to the global violations?
 #        g-violation-add: 10
 #Actions.
-#        action: %vl%=1:cancel:example notify %player% might be using %hack%.
+#        action: 
+#             -
     killaura:
         enabled: true
         name: KillAura
@@ -165,33 +135,32 @@ checks:
             g-violation-add: 15
             action: %vl%=70:cancel:%vl%=90:example notify %player% might be using killaura.:%vl%=120:example notify %player% is probably using killaura. %vl%=300: example kick %player% You have been kicked because of suspicious attack.
             
-        speed:
-                enabled: true
-                name: Speed
-                modules:
-                    limit:
-                        enabled: true
-                        #Maximum bps (blocks per second) the player can go in the air. Usage: 3t:7.7,10t:6.8,5.7 would be 3ticks in the air, the max would be 7.7 bps, then 10 ticks, max 6.8, then max 5.7 bps.
-                        max-bps: 3t:7.7,10t:6.8,5.7
-                        violation-add: 14
-                    timer:
-                        enabled: true
-                        #Maximum timer the player can have.
-                        max-timer: 1.08
-                        #Minimum timer the player can have.
-                        min-timer: 0.97
-                        #Maximum pps (packets per second) the player can send. I actually don't know, so ac devs, pls insert this number.
-                        max-pps: 100
-                        #Minimum pps (packets per second) the player can send. I actually don't know, so ac devs, pls insert this number.
-                        min-pps: 10
-                        violation-add: 14
-                    low-hop:
-                        enabled: true
-                        #Maximum blocks the player can jump. This is the EXACT value of minecraft.
-                        max-blocks-height: 1.24918707874468
-                        #Minimum blocks the player can jump. 
-                        min-blocks-height: 1.249
-                        
+    speed:
+            enabled: true
+            name: Speed
+            modules:
+                limit:
+                    enabled: true
+                    #Maximum bps (blocks per second) the player can go in the air. Usage: 3t:7.7,10t:6.8,5.7 would be 3ticks in the air, the max would be 7.7 bps, then 10 ticks, max 6.8, then max 5.7 bps.
+                    max-bps: 3t:7.7,10t:6.8,5.7
+                    violation-add: 14
+                timer:
+                    enabled: true
+                    #Maximum timer the player can have.
+                    max-timer: 1.08
+                    #Minimum timer the player can have.
+                    min-timer: 0.97
+                    #Maximum pps (packets per second) the player can send. I actually don't know, so ac devs, pls insert this number.
+                    max-pps: 100
+                    #Minimum pps (packets per second) the player can send. I actually don't know, so ac devs, pls insert this number.
+                    min-pps: 10
+                    violation-add: 14
+                low-hop:
+                    enabled: true
+                    #Maximum blocks the player can jump. This is the EXACT value of minecraf
+                    max-blocks-height: 1.24918707874468
+                    #Minimum blocks the player can jump. 
+                    min-blocks-height: 1.249                        
                 violation-need: 100
                 g-violation-add: 10
                 action: %vl%=1:cancel:example notify %player% might be using %hack%.
