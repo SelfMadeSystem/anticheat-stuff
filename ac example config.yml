@@ -2,6 +2,8 @@
 #Example AC uses actions.
 #
 #Supports PlaceholderAPI https://www.spigotmc.org/resources/placeholderapi.6245/
+#
+#Placeholders are: %player% %tps% %ping% %check% %sub-check% (only in case under sub-checks) %vl% %nick%
 
 #Update checker will check to see if there is an update for example.
 update_checker:
@@ -15,35 +17,14 @@ update_checker:
     
 #Time for the good stuff. Checks.
 checks:
-#example check
-#Most checks will follow this patern. If it has something that isn't here, it will be explained there.
-#    check:
-#Is the check enabled?
-#        enabled: true
-#Check name for %hack%
-#        name: Check
-#You can set all the parameters here
-#        modules:
-#Module
-#            module:
-#Is the check enabled?
-#                enabled: true
-#Amount it will add to violations.
-#                violation-add: 1
-#How many violations will this check need to add to the global violations?
-#        violation-need: 100
-#How many violations will this check add to the global violations?
-#        g-violation-add: 10
-#Actions.
-#        action: 
-#             -
     killaura:
         enabled: true
-        name: KillAura
+        nick: KillAura
         modules:
             SelfHit:
                 enabled: true
                 violation-add: 30
+                actions: {}
             Reach:
                 enabled: true
                 #Max reach distance
@@ -65,19 +46,19 @@ checks:
                     #Percentage of hits before adding to the violations.
                     percentage: 40
                     violation-add: 15
-            
-            violation-need: 200
-            g-violation-add: 15
-            action: %vl%=70:cancel:%vl%=90:example notify %player% might be using killaura.:%vl%=120:example notify %player% is probably using killaura. %vl%=300: example kick %player% You have been kicked because of suspicious attack.
+            cancel-vl: 70
+            action: 
+            10:
+            - "example notify %player% IS USING AURA!!!!!!!!! %tps% %ping% %vl%"
             
     speed:
             enabled: true
-            name: Speed
+            nick: Speed
             modules:
                 limit:
                     enabled: true
-                    #Maximum bps (blocks per second) the player can go in the air. Usage: 3t:7.7,10t:6.8,5.7 would be 3ticks in the air, the max would be 7.7 bps, then 10 ticks, max 6.8, then max 5.7 bps.
-                    max-bps: 3t:7.7,10t:6.8,5.7
+                    #Maximum bps (blocks per second) the player can go.
+                    max-bps: 6
                     violation-add: 14
                 timer:
                     enabled: true
