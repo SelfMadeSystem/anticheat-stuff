@@ -1,5 +1,5 @@
 #Config file for editiing all the checks. :)
-#Placeholders: %player% %check% %sub-check% %name% %vl% %ping% %tps%
+#Placeholders: %player% %check% %sub-check% %name% %vl% %ping% %tps% %world% %x% %y% %z%
 #Suggest more placeholders please.
 #vl-add is how much vl the subcheck should add.
 
@@ -22,4 +22,13 @@ checks:
         vl-add: 7
     actions:
      25*2: cancel
-     50*2: 'vortex notify %player% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+     50*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+  reach:
+    sub-check:
+      type-a:
+        vl-add: 4
+      type-b:
+        vl-add: 8
+    actions:
+      4*2: cancel
+      12*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
