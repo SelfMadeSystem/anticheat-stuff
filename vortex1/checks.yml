@@ -23,6 +23,7 @@ checks:
     actions:
      25*2: cancel
      50*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+     200: 'vortex kick %plater% Hacking.'
   reach:
     sub-check:
       type-a:
@@ -30,5 +31,32 @@ checks:
       type-b:
         vl-add: 8
     actions:
-      4*2: cancel
-      12*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+      8*2: cancel
+      16*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+      50: 'vortex kick %player% Hacking.'
+  speed:
+    sub-check:
+      type-a:
+        vl-add: 5
+    actions:
+      20*2 cancel
+      60*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+      100: 'vortex kick %player% Hacking.'
+  fly:
+    sub-check:
+      type-a:
+        vl-add: 10
+    actions:
+      40*2: cancel
+      100*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+      400: 'vortex kick %player% Hacking.'
+  nofall:
+    sub-check:
+      type-a:
+        vl-add: 5
+      type-b:
+        vl-add: 5
+    actions:
+      5:cancel
+      20*2: 'vortex notify %player% in %world% at %x%,%y%,%z% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
+      50: 'vortex kick %player% Hacking.'
