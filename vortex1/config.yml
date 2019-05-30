@@ -1,4 +1,4 @@
-# This is the config for Vortex. Go here to enable/disable all the checks and enable/disable certain features.
+#This is the config for Vortex. Go here to enable/disable all the checks and enable/disable certain features.
 
 #Want to enable SQL?
 sql:
@@ -10,3 +10,66 @@ sql:
   database: ''
   username: ''
   password: ''
+
+#Want to enable update notification?
+update-notification:
+  enabled: true
+
+#Want to enable BungeeCord support?
+bungeecord:
+  enabled: true
+
+#Checks time.
+checks:
+  killaura:
+    #Description.
+    type-a:
+      #Want to enable KillAura type A?
+      enabled: true
+    #Description.
+    type-b:
+      #Want to enable KillAura type B?
+      enabled: true
+    #Description.
+    type-c:
+      #Want to enable KillAura type c?
+      enabled: true
+    #Description.
+    type-e:
+      #Want to enable KillAura type E?
+      enabled: true
+    #Description.
+    type-f:
+      #Want to enable KillAura type F?
+      enabled: true
+    #Description.
+    type-g:
+      #Want to enable KillAura type G?
+      enabled: true
+  reach:
+    #Description.
+    type-a:
+      #Want to enable Reach type A?
+      enabled: true
+    #Description.
+    type-b:
+      #Want to enable Reach type B?
+      enbaled: true
+  speed:
+    #Description.
+    type-a:
+      #Want to enable Speed type A?
+      enabled: true
+  fly:
+    #Description.
+    type-a:
+      #Want to enabled Fly type A?
+      enabled: true
+  nofall:
+    #Description.
+    type-a:
+      #Want to enable NoFall type A?
+      enabled: true
+    type-b:
+      #Want to enable NoFall type B?
+      enabled: true
