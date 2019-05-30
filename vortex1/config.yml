@@ -1,0 +1,12 @@
+# This is the config for Vortex. Go here to enable/disable all the checks and enable/disable certain features.
+
+#Want to enable SQL?
+sql:
+  enabled: false
+  updateInterval: 60
+  host: 127.0.0.1
+  port: '3306'
+  characterEncoding: utf8
+  database: ''
+  username: ''
+  password: ''
