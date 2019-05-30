@@ -1,0 +1,25 @@
+#Config file for editiing all the checks. :)
+#Placeholders: %player% %check% %sub-check% %name% %vl% %ping% %tps%
+#Suggest more placeholders please.
+#vl-add is how much vl the subcheck should add.
+
+checks:
+  killaura:
+    sub-check:
+      type-a:
+        vl-add: 4
+      type-b:
+        vl-add: 2
+      type-c:
+        vl-add: 3
+      type-d:
+        vl-add: 8
+      type-e:
+        vl-add: 6
+      type-f:
+        vl-add: 8
+      type-g:
+        vl-add: 7
+    actions:
+     25*2: cancel
+     50*2: 'vortex notify %player% might be using %check%. Detected with %sub-check%. Vl: %vl% Ping: %ping% Tps: %tps%'
