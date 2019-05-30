@@ -1,5 +1,5 @@
 #Config file for all the messages.
-#Placeholders: %prefix% %permission-node% %player% %vl% %check% %sub-check%
+#Placeholders: %prefix% %permission-node% %player% %vl% %check% %sub-check% %ver%
 
 prefix: '&7&l[&r&5Vortex&6&lAC&r&7&l] '
 unkown-command: %prefix% '&rUnkown command. Type &7&l/&6&lvortex &c&lhelp&r for help.'
@@ -10,3 +10,4 @@ reload-fail: %prefix% '&r&cReload failed. Please make sure you haven''t made any
 reload-success: %prefix% '&r&aReload successful. Reloaded all config files.'
 verbose-enabled: %prefix% '&c&aVerbose enabled.'
 verbose-disabled: %prefix% '&c&cVerbose disabled.'
+version: %prefix% '&ris on version &7&l' %ver% '&e&7.'
