@@ -1,7 +1,7 @@
 #Config file for all the messages.
 #Placeholders: %prefix% %permission-node% %player% %vl% %check% %sub-check% %ver%
 
-prefix: '&7&l[&r&5Vortex&6&lAC&r&7&l] '
+prefix: '&8&l[&5&lVAC&r&8&l] '
 unkown-command: '%prefix% &rUnkown command. Type &7&l/&6&lvortex &c&lhelp&r for help.'
 no-permission: '%prefix% &r&cYou don''t have the permission node: &c&l%permission-missing%&r. You don''t have access to that command. Please contact a server administrator if you bielive this is an error.'
 error: '%prefix% &r&cAn error has occured. Check console for details or report the error to the support page.'
